@@ -6,7 +6,11 @@
     <title><%= user_name %></title>
 </head>
 <body>
+    <%- include('_header'); %>
+
     <h1><%= user_name %>'s posts</h1>
     <img src=<%= img_link %> alt="<%= user_name %>'s posts">
+    <%- include('_footer'); %>
+
 </body>
 </html>

@@ -1,0 +1,19 @@
+footer{
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 1), transparent);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
+    color: aliceblue;
+    ul{
+        list-style-type: none;
+        a{
+            padding: 15px 10px 10px 10px;  
+            text-decoration: none;
+            color: aliceblue;
+        }
+        li{
+            display: inline;
+        }
+    }
+    
+}

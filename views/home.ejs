@@ -2,3 +2,22 @@
 <h1>
     codeial / <%= title %>
 </h1>
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <form action="/post/create-post" id="new-post-form" method="post">
+        <textarea name="content" placeholder="Type Here ..." cols="30" rows="3"></textarea>
+        <input type="submit" value="Post">
+    </form>
+    <div id="display-post-container">
+        <ul>
+            <% for(let i=0;i<posts.length;i++){ %>
+                <li>
+                    <p><%= posts[i].content %></p> 
+                    <small>- <%= posts[i].user.name %></small>
+                </li>
+                
+            <%}%> 
+        </ul>
+        
+    </div>
+</section>

@@ -13,16 +13,22 @@
     <div id="display-post-container">
         <ul>
 
-            <% for(let i=0;i<posts.length;i++){ %>
+            <% for(post of posts){ %>
                 <li>
-                    <p><%= posts[i].content %></p> 
-                    <small>- <%= posts[i].user.name %></small>
+                     <%if((locals.user)&&(post.user.id == locals.user.id)){%>
+                        <small><a href="/post/delete-post/<%= post.id%>">X</a></small>
+                    <%}%>
+                    <p><%= post.content %></p> 
+                   
+                    <small>- <%= post.user.name %></small>
                     <div id="display-comments-container">
                         <ul>
-                            <% for(let j = 0;j<posts[i].comments.length;j++){ %>
+                            <% for(comment of post.comments){ %>
                                 <li>
-                                    <small><%= posts[i].comments[j].content %> <br/>-- <%= posts[i].comments[j].user.name %></small>
-                                    
+                                    <small><%= comment.content %> <br/>-- <%= comment.user.name %></small>
+                                    <%if((locals.user)&&((comment.user.id == locals.user.id)||(post.user.id == locals.user.id))){%>
+                                        <small><a href="/post/delete-comment/<%= comment.id %>">X</a></small>
+                                    <%}%>
                                 </li>
                             <% } %>
                         </ul>
@@ -30,7 +36,7 @@
                     <%if(locals.user){%>
 
                     <form action="/post/comment" id="new-comment-form" method="post">
-                        <input type="hidden" name="postId" value="<%= posts[i]._id %>">
+                        <input type="hidden" name="postId" value="<%= post._id %>">
                         <textarea name="content"  cols="20" rows="2" placeholder="comment..."></textarea>
                         <input type="submit" value="Comment">
                     </form>

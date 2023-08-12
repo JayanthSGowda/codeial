@@ -10,7 +10,6 @@ module.exports.home = async function (req, res){
         //   model: 'User' Replace with the actual User model name
         }
       }).catch(err => {console.log('error in fetching posts from db'); return});
-    console.log(posts[0].comments);
     return res.render('home',{
         title: "home",
         posts,

@@ -17,6 +17,24 @@
                 <li>
                     <p><%= posts[i].content %></p> 
                     <small>- <%= posts[i].user.name %></small>
+                    <div id="display-comments-container">
+                        <ul>
+                            <% for(let j = 0;j<posts[i].comments.length;j++){ %>
+                                <li>
+                                    <small><%= posts[i].comments[j].content %> <br/>-- <%= posts[i].comments[j].user.name %></small>
+                                    
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <%if(locals.user){%>
+
+                    <form action="/post/comment" id="new-comment-form" method="post">
+                        <input type="hidden" name="postId" value="<%= posts[i]._id %>">
+                        <textarea name="content"  cols="20" rows="2" placeholder="comment..."></textarea>
+                        <input type="submit" value="Comment">
+                    </form>
+                    <%}%>
                 </li>
                 
             <%}%> 
